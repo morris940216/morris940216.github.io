@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Morris | Developer Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg-dark: #050814;
+            --bg-section: #0b1020;
+            --accent: #5cf2ff;
+            --accent-soft: #b3f0ff;
+            --text-main: #f5f5f7;
+            --text-muted: #a5a8c2;
+            --card-bg: #14182a;
+            --border-subtle: #262b3f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #050814;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* NAVBAR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            background: rgba(5, 8, 20, 0.9);
+            border-bottom: 1px solid rgba(90, 90, 130, 0.25);
+        }
+
+        .nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .logo span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.8rem;
+            height: 1.8rem;
+            border-radius: 999px;
+            background: radial-gradient(circle at 20% 0, #b3f0ff, #5cf2ff, #5c9eff);
+            box-shadow: 0 0 10px rgba(92, 242, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            position: relative;
+            padding-bottom: 0.1rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-cta {
+            border-radius: 999px;
+            border: 1px solid rgba(92, 242, 255, 0.6);
+            padding: 0.3rem 0.9rem;
+            font-size: 0.85rem;
+            color: var(--accent-soft);
+        }
+
+        /* LAYOUT */
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 3rem;
+        }
+
+        section {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid rgba(38, 43, 63, 0.7);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-soft);
+            margin-bottom: 0.35rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin-bottom: 1.6rem;
+        }
+
+        /* HERO：正常網站風格 */
+        .hero {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .hero-main {
+            flex: 1 1 260px;
+            min-width: 0;
+        }
+
+        .hero-side {
+            flex: 0 0 280px;
+            max-width: 100%;
+        }
+
+        .hero-title {
+            font-size: 2.1rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title span {
+            background: linear-gradient(to right, #b3f0ff, #5cf2ff, #5c9eff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .tag {
+            border-radius: 999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.78rem;
+            border: 1px solid rgba(90, 90, 130, 0.7);
+            color: var(--text-muted);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.85rem;
+        }
+
+        .btn-primary,
+        .btn-outline {
+            border-radius: 999px;
+            padding: 0.5rem 1.2rem;
+            font-size: 0.88rem;
+            border: 1px solid transparent;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #5cf2ff, #5c9eff);
+            color: #050814;
+            font-weight: 600;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent-soft);
+            border-color: rgba(92, 242, 255, 0.7);
+        }
+
+        .hero-card {
+            background: var(--bg-section);
+            border-radius: 0.9rem;
+            border: 1px solid var(--border-subtle);
+            padding: 1rem 1.1rem;
+            font-size: 0.86rem;
+            color: var(--text-muted);
+        }
+
+        .hero-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+        }
+
+        .hero-card-meta {
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .hero-card-meta span {
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+
+        /* ABOUT */
+        .about-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .about-text {
+            flex: 1 1 280px;
+            min-width: 0;
+        }
+
+        .about-text p {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .about-list {
+            margin-top: 0.8rem;
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-list li {
+            padding-left: 0.9rem;
+            position: relative;
+            margin-bottom: 0.35rem;
+        }
+
+        .about-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-soft);
+        }
+
+        .stats {
+            flex: 0 0 260px;
+            max-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 0.85rem;
+        }
+
+        .stat-card {
+            border-radius: 0.9rem;
+            padding: 0.85rem 0.9rem;
+            background: rgba(11, 16, 36, 0.95);
+            border: 1px solid var(--border-subtle);
+            font-size: 0.82rem;
+        }
+
+        .stat-card strong {
+            display: block;
+            font-size: 1.05rem;
+            margin-bottom: 0.1rem;
+        }
+
+        /* PROJECTS */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .card {
+            border-radius: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-subtle);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            font-size: 0.9rem;
+        }
+
+        .card-badge {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-soft);
+        }
+
+        .card-title {
+            font-size: 1rem;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .card-tags {
+            margin-top: 0.3rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .card-link {
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--accent-soft);
+        }
+
+        /* TECH STACK */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .stack-card {
+            border-radius: 0.9rem;
+            padding: 0.9rem;
+            background: rgba(11, 16, 36, 0.95);
+            border: 1px solid var(--border-subtle);
+            font-size: 0.86rem;
+        }
+
+        .stack-title {
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .stack-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.4rem;
+        }
+
+        .stack-tag {
+            font-size: 0.75rem;
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            border: 1px solid rgba(90, 90, 130, 0.7);
+            color: var(--text-muted);
+        }
+
+        /* CONTACT */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+
+        .contact-info {
+            flex: 1 1 260px;
+            min-width: 0;
+        }
+
+        .contact-info p {
+            font-size: 0.95rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            font-size: 0.86rem;
+        }
+
+        .social-links a {
+            padding: 0.28rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(90, 90, 130, 0.8);
+            color: var(--text-muted);
+        }
+
+        form {
+            flex: 1 1 260px;
+            min-width: 0;
+            display: grid;
+            gap: 0.75rem;
+            font-size: 0.86rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.5rem 0.6rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(70, 76, 104, 0.9);
+            background: rgba(5, 8, 20, 0.9);
+            color: var(--text-main);
+            font: inherit;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        footer {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 3rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            border-top: 1px solid rgba(38, 43, 63, 0.7);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                display: none;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <div class="logo">
+                <span>M</span>
+                MORRIS.DEV
+            </div>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#stack">Tech Stack</a>
+                <a href="#contact">Contact</a>
+                <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+            </nav>
+            <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener" class="nav-cta">
+                GitHub
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="top">
+            <div class="hero-main">
+                <div class="section-label">Morris</div>
+                <h1 class="hero-title">
+                    Hi, I'm <span>Morris</span><br />
+                    a developer who likes to ship things.
+                </h1>
+                <p class="hero-text">
+                    平常在修電機 / 資工相關課程，課後會把學到的東西丟進各種 Side Project。
+                    從 Web backend、FPGA / OPAMP 實驗，到 Unreal 通道場景，喜歡看程式怎麼在真實問題裡運作。
+                </p>
+
+                <div class="hero-tags">
+                    <div class="tag">Backend / Web</div>
+                    <div class="tag">Embedded / FPGA</div>
+                    <div class="tag">Side Projects</div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">看專案</a>
+                    <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener" class="btn-outline">
+                        我的 GitHub
+                    </a>
+                </div>
+            </div>
+
+            <aside class="hero-side">
+                <div class="hero-card">
+                    <div class="hero-card-title">關於這個網站</div>
+                    <p>
+                        這裡是 Morris 的個人程式頁面，用來整理：做過的專案、實驗、以及常用技術。
+                        比起華麗動畫，更偏向「簡單乾淨、老師和同學一看就懂」的形式。
+                    </p>
+                    <div class="hero-card-meta">
+                        <span>🔗 GitHub：<a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener">morris940216</a></span>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-label">About</div>
+            <h2 class="section-title">Who am I?</h2>
+            <p class="section-subtitle">
+                簡單介紹背景、寫程式的習慣，以及你在意的工程價值。
+            </p>
+
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>
+                        我是 Morris，電機 / 資工相關科系學生。比起只做好作業，我更想把課堂知識變成真的工具或系統。
+                    </p>
+                    <p>
+                        做過的東西從家庭物資清點系統、OPAMP / FPGA 實驗，到 Unreal 後室通道場景短片都有。
+                        喜歡記錄踩雷過程，之後回頭看可以少重複犯錯。
+                    </p>
+
+                    <ul class="about-list">
+                        <li>習慣用 Git 管理版本，專案結構與 commit message 會整理乾淨</li>
+                        <li>會寫文件／簡報，把技術內容轉成一般人也懂的說明</li>
+                        <li>Debug 會先重現問題、畫流程，再縮小範圍，而不是亂改一通</li>
+                    </ul>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <strong>10+ projects</strong>
+                        課堂與個人專案累積，持續增加中
+                    </div>
+                    <div class="stat-card">
+                        <strong>多領域</strong>
+                        Web、硬體實驗、3D 場景都有碰
+                    </div>
+                    <div class="stat-card">
+                        <strong>學以致用</strong>
+                        上課學到的東西盡量落地到專案
+                    </div>
+                    <div class="stat-card">
+                        <strong>歡迎合作</strong>
+                        專題、工具、作業影片都可討論
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="section-label">Projects</div>
+            <h2 class="section-title">Selected Projects</h2>
+            <p class="section-subtitle">
+                下面是幾個代表目前風格的專案。之後可以依實際 repo 補上 GitHub 連結。
+            </p>
+
+            <div class="card-grid">
+                <article class="card">
+                    <div class="card-badge">Web App</div>
+                    <h3 class="card-title">家庭物資清點系統</h3>
+                    <p>Spring Boot + MySQL + Thymeleaf</p>
+                    <p class="card-meta">
+                        管理家中各房間物品與效期，支援數量提醒、過期提醒、地點 / 類別查看。
+                        從資料庫 schema、後端 API 到前端頁面都自行設計。
+                    </p>
+                    <div class="card-tags">
+                        <span>REST API</span> · <span>登入 / 權限</span> · <span>前端 UI</span>
+                    </div>
+                    <!-- 之後可以打開這行 -->
+                    <!-- <a class="card-link" href="https://github.com/morris940216/你的專案" target="_blank" rel="noopener">View on GitHub →</a> -->
+                </article>
+
+                <article class="card">
+                    <div class="card-badge">Game / 3D</div>
+                    <h3 class="card-title">後室風格 Unreal 通道場景</h3>
+                    <p>Unreal Engine 5 • Blueprint</p>
+                    <p class="card-meta">
+                        建構廢棄地下通道、霧效與燈光、相機路徑與觸發事件（怪物出現等），輸出成 6 秒作業影片。
+                    </p>
+                    <div class="card-tags">
+                        <span>Level Design</span> · <span>Trigger</span> · <span>Sequencer</span>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-badge">Hardware / Lab</div>
+                    <h3 class="card-title">OPAMP & FPGA Lab</h3>
+                    <p>Cadence / Verilog / FPGA</p>
+                    <p class="card-meta">
+                        二階 OPAMP 設計（LVS / DRC / PEX），以及 FPGA 狀態機、Debounce、LED 控制等實驗，整合模擬與實作流程。
+                    </p>
+                    <div class="card-tags">
+                        <span>Analog Design</span> · <span>RTL</span> · <span>EDA Flow</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- TECH STACK -->
+        <section id="stack">
+            <div class="section-label">Tech Stack</div>
+            <h2 class="section-title">What I use</h2>
+            <p class="section-subtitle">
+                給老師、同學、未來合作對象看的一眼總覽。
+            </p>
+
+            <div class="stack-grid">
+                <div class="stack-card">
+                    <div class="stack-title">Languages</div>
+                    <p>平常作業與 Side Project 最常用的語言。</p>
+                    <div class="stack-tags">
+                        <span class="stack-tag">Java</span>
+                        <span class="stack-tag">C / C++</span>
+                        <span class="stack-tag">Python</span>
+                        <span class="stack-tag">Verilog</span>
+                        <span class="stack-tag">HTML / CSS / JS</span>
+                    </div>
+                </div>
+
+                <div class="stack-card">
+                    <div class="stack-title">Web / Backend</div>
+                    <p>做系統、API、網站時使用的技術。</p>
+                    <div class="stack-tags">
+                        <span class="stack-tag">Spring Boot</span>
+                        <span class="stack-tag">Thymeleaf</span>
+                        <span class="stack-tag">REST API</span>
+                        <span class="stack-tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="stack-card">
+                    <div class="stack-title">Hardware / Tools</div>
+                    <p>電機 / 實驗相關工具。</p>
+                    <div class="stack-tags">
+                        <span class="stack-tag">Cadence Virtuoso</span>
+                        <span class="stack-tag">FPGA / ISE</span>
+                        <span class="stack-tag">Unreal Engine</span>
+                        <span class="stack-tag">Git / GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">Let’s build something</h2>
+            <p class="section-subtitle">
+                專題、工具、作業影片或單純想討論技術，都可以從這裡聯絡我。
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p>
+                        最主要的聯絡方式是 GitHub 或 email。簡單介紹你自己、專案性質與預計時程，我會儘量回覆。
+                    </p>
+                    <div class="social-links">
+                        <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+                        <a href="mailto:yourname@example.com">Email</a>
+                    </div>
+                </div>
+
+                <form>
+                    <div>
+                        <label for="name">Name / 暱稱</label>
+                        <input id="name" type="text" placeholder="How should I call you?" />
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" placeholder="you@example.com" />
+                    </div>
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="想一起做什麼、或想問什麼都可以寫在這裡。"></textarea>
+                    </div>
+                    <button class="btn-primary" type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>© <span id="year"></span> Morris</div>
+        <div>Personal developer page • GitHub: morris940216</div>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
