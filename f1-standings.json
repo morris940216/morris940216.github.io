@@ -1,0 +1,11 @@
+{
+  "season": 2025,
+  "updatedAt": "2025-11-28",
+  "drivers": [
+    { "position": 1, "driver": "Lando Norris",    "team": "McLaren",  "points": 390 },
+    { "position": 2, "driver": "Oscar Piastri",   "team": "McLaren",  "points": 366 },
+    { "position": 3, "driver": "Max Verstappen",  "team": "Red Bull", "points": 366 },
+    { "position": 4, "driver": "George Russell",  "team": "Mercedes", "points": 294 },
+    { "position": 5, "driver": "Charles Leclerc", "team": "Ferrari",  "points": 226 }
+  ]
+}

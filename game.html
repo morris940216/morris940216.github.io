@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Morris | 小遊戲</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg-dark: #050814;
+            --bg-section: #0b1020;
+            --accent: #5cf2ff;
+            --accent-soft: #b3f0ff;
+            --text-main: #f5f5f7;
+            --text-muted: #a5a8c2;
+            --card-bg: #14182a;
+            --border-subtle: #262b3f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(12px);
+            background: rgba(5, 8, 20, 0.9);
+            border-bottom: 1px solid rgba(90, 90, 130, 0.25);
+        }
+
+        .nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+        }
+
+        .logo span {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.8rem;
+            height: 1.8rem;
+            border-radius: 999px;
+            background: radial-gradient(circle at 20% 0, #b3f0ff, #5cf2ff, #5c9eff);
+            box-shadow: 0 0 10px rgba(92, 242, 255, 0.7);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-soft);
+        }
+
+        .nav-cta {
+            border-radius: 999px;
+            border: 1px solid rgba(92, 242, 255, 0.6);
+            padding: 0.3rem 0.9rem;
+            font-size: 0.85rem;
+            color: var(--accent-soft);
+        }
+
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 1.25rem 3rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            color: var(--accent-soft);
+            margin-bottom: 0.35rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.98rem;
+            color: var(--text-muted);
+            max-width: 640px;
+            margin-bottom: 1.6rem;
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            border: 1px solid var(--border-subtle);
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .game-card h3 {
+            margin-bottom: 0.4rem;
+            font-size: 1.1rem;
+        }
+
+        .game-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .game-status {
+            margin-top: 0.4rem;
+            font-size: 0.9rem;
+            color: var(--accent-soft);
+        }
+
+        .game-result {
+            margin-top: 0.3rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .game-btn {
+            margin-top: 0.7rem;
+            border-radius: 999px;
+            padding: 0.45rem 1.2rem;
+            border: 1px solid rgba(92, 242, 255, 0.7);
+            background: transparent;
+            color: var(--accent-soft);
+            cursor: pointer;
+            font-size: 0.86rem;
+        }
+
+        .game-input {
+            margin-top: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .game-input input {
+            padding: 0.35rem 0.5rem;
+            border-radius: 0.4rem;
+            border: 1px solid rgba(70, 76, 104, 0.9);
+            background: rgba(5, 8, 20, 0.9);
+            color: var(--text-main);
+            font: inherit;
+            width: 80px;
+        }
+
+        footer {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 3rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            border-top: 1px solid rgba(38, 43, 63, 0.7);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                display: none;
+            }
+
+            footer {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="nav">
+        <div class="logo">
+            <span>M</span>
+            MORRIS.DEV
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">首頁</a>
+            <a href="game.html">小遊戲</a>
+            <a href="music.html">Coding 練習</a>
+            <a href="f1.html">F1 新聞</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://github.com/morris940216" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+        <a href="https://github.com/morris940216" target="_blank" rel="noopener" class="nav-cta">
+            GitHub
+        </a>
+    </div>
+</header>
+
+<main>
+    <section id="games">
+        <div class="section-label">Mini Games</div>
+        <h1 class="section-title">小遊戲區</h1>
+        <p class="section-subtitle">
+            這裡放一些可以在等模擬、等編譯時玩的小東西：反應測試、點擊速度、心算練習。
+        </p>
+
+        <div class="game-grid">
+            <!-- Game 1：反應速度 -->
+            <article class="game-card">
+                <h3>反應速度測試</h3>
+                <p class="game-desc">
+                    按下「開始遊戲」後，等到提示變成「點我！」再按，看看你反應多快。
+                </p>
+                <div id="g1-status" class="game-status">按下開始遊戲來測試你的反應速度。</div>
+                <div id="g1-result" class="game-result">最佳紀錄：— ms</div>
+                <button id="g1-btn" class="game-btn">開始遊戲</button>
+            </article>
+
+            <!-- Game 2：5 秒點擊速度 -->
+            <article class="game-card">
+                <h3>5 秒點擊速度測試</h3>
+                <p class="game-desc">
+                    在 5 秒內盡量多按按鈕，看看你的 CPS（clicks per second）。
+                </p>
+                <div id="g2-status" class="game-status">按「開始」後，改按「瘋狂點我」來計數。</div>
+                <div id="g2-result" class="game-result">目前：0 次（最佳記錄：— CPS）</div>
+                <button id="g2-start" class="game-btn">開始</button>
+                <button id="g2-click" class="game-btn" style="margin-left:0.4rem;">瘋狂點我</button>
+            </article>
+
+            <!-- Game 3：心算小測驗 -->
+            <article class="game-card">
+                <h3>心算小測驗</h3>
+                <p class="game-desc">
+                    出一題簡單加法或乘法，直接在腦中算完輸入答案，看看正確率。
+                </p>
+                <div id="g3-question" class="game-status">按「出題」來開始。</div>
+                <div class="game-input">
+                    <input id="g3-answer" type="number" placeholder="答案" />
+                    <button id="g3-submit" class="game-btn">送出</button>
+                    <button id="g3-next" class="game-btn">出題</button>
+                </div>
+                <div id="g3-result" class="game-result">答對：0 題 / 總題數：0</div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div>© <span id="year"></span> Morris</div>
+    <div>小遊戲頁面</div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Game 1: 反應速度
+    (function () {
+        const btn = document.getElementById("g1-btn");
+        const status = document.getElementById("g1-status");
+        const result = document.getElementById("g1-result");
+        let timeout = null;
+        let start = null;
+        let best = null;
+        let state = "idle"; // idle | wait | go
+
+        btn.addEventListener("click", () => {
+            if (state === "idle") {
+                state = "wait";
+                status.textContent = "等我說『點我！』再按，太早按就犯規。";
+                btn.textContent = "等待中…";
+
+                timeout = setTimeout(() => {
+                    state = "go";
+                    start = performance.now();
+                    status.textContent = "點我！點我！";
+                    btn.textContent = "點我！";
+                }, 800 + Math.random() * 2200);
+
+            } else if (state === "wait") {
+                clearTimeout(timeout);
+                state = "idle";
+                status.textContent = "太早了啦，再試一次。";
+                btn.textContent = "重新開始";
+
+            } else if (state === "go") {
+                const diff = Math.round(performance.now() - start);
+                if (best === null || diff < best) {
+                    best = diff;
+                }
+                status.textContent = `這次反應時間：${diff} ms`;
+                result.textContent = `最佳紀錄：${best} ms`;
+                btn.textContent = "再玩一次";
+                state = "idle";
+            }
+        });
+    })();
+
+    // Game 2: 5 秒點擊
+    (function () {
+        const startBtn = document.getElementById("g2-start");
+        const clickBtn = document.getElementById("g2-click");
+        const status = document.getElementById("g2-status");
+        const result = document.getElementById("g2-result");
+
+        let clicks = 0;
+        let bestCps = null;
+        let running = false;
+        const DURATION = 5000; // 5 秒
+
+        clickBtn.disabled = true;
+
+        startBtn.addEventListener("click", () => {
+            if (running) return;
+            running = true;
+            clicks = 0;
+            status.textContent = "開始了！瘋狂點右邊那顆按鈕！";
+            result.textContent = "目前：0 次（最佳記錄：" + (bestCps === null ? "—" : bestCps.toFixed(2) + " CPS") + "）";
+            clickBtn.disabled = false;
+
+            setTimeout(() => {
+                running = false;
+                clickBtn.disabled = true;
+                const cps = clicks / (DURATION / 1000);
+                if (bestCps === null || cps > bestCps) {
+                    bestCps = cps;
+                }
+                status.textContent = "時間到！";
+                result.textContent = `共點了 ${clicks} 次，平均 ${cps.toFixed(2)} CPS（最佳：${bestCps.toFixed(2)} CPS）`;
+            }, DURATION);
+        });
+
+        clickBtn.addEventListener("click", () => {
+            if (!running) return;
+            clicks++;
+            status.textContent = `加油！目前：${clicks} 次`;
+        });
+    })();
+
+    // Game 3: 心算
+    (function () {
+        const qEl = document.getElementById("g3-question");
+        const ansInput = document.getElementById("g3-answer");
+        const submitBtn = document.getElementById("g3-submit");
+        const nextBtn = document.getElementById("g3-next");
+        const resultEl = document.getElementById("g3-result");
+
+        let currentAnswer = null;
+        let correct = 0;
+        let total = 0;
+
+        function newQuestion() {
+            const a = Math.floor(Math.random() * 20) + 1;
+            const b = Math.floor(Math.random() * 20) + 1;
+            const isMul = Math.random() < 0.4; // 40% 出乘法
+
+            if (isMul) {
+                qEl.textContent = `題目：${a} × ${b} = ?`;
+                currentAnswer = a * b;
+            } else {
+                qEl.textContent = `題目：${a} + ${b} = ?`;
+                currentAnswer = a + b;
+            }
+            ansInput.value = "";
+            ansInput.focus();
+        }
+
+        nextBtn.addEventListener("click", () => {
+            newQuestion();
+        });
+
+        submitBtn.addEventListener("click", () => {
+            if (currentAnswer === null) {
+                qEl.textContent = "先按『出題』再作答。";
+                return;
+            }
+            const userAns = Number(ansInput.value);
+            if (Number.isNaN(userAns)) {
+                qEl.textContent = "請輸入數字答案。";
+                return;
+            }
+            total++;
+            if (userAns === currentAnswer) {
+                correct++;
+                qEl.textContent = "✅ 正確！再來一題？";
+            } else {
+                qEl.textContent = `❌ 錯了，正確答案是 ${currentAnswer}。`;
+            }
+            resultEl.textContent = `答對：${correct} 題 / 總題數：${total}（正確率：${total ? Math.round(correct / total * 100) : 0}%）`;
+            currentAnswer = null;
+        });
+    })();
+</script>
+</body>
+</html>

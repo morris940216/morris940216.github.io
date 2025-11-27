@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Morris | Coding 練習</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        :root {
+            --bg-dark: #050814;
+            --bg-section: #0b1020;
+            --accent: #5cf2ff;
+            --accent-soft: #b3f0ff;
+            --text-main: #f5f5f7;
+            --text-muted: #a5a8c2;
+            --card-bg: #14182a;
+            --border-subtle: #262b3f;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(5,8,20,0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(90,90,130,0.25);
+        }
+
+        .nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display:flex; align-items:center; gap:0.45rem;
+            font-weight:800; letter-spacing:0.12em; text-transform:uppercase;
+            font-size:0.95rem;
+        }
+
+        .logo span {
+            width:1.8rem; height:1.8rem; border-radius:999px;
+            display:flex; align-items:center; justify-content:center;
+            background: radial-gradient(circle, #b3f0ff, #5cf2ff, #5c9eff);
+            box-shadow: 0 0 10px rgba(92, 242, 255, 0.7);
+        }
+
+        .nav-links { display:flex; gap:1.5rem; font-size:0.9rem; }
+        .nav-links a { color:var(--text-muted); }
+        .nav-links a:hover { color:var(--accent-soft); }
+
+        .nav-cta {
+            border-radius:999px;
+            border:1px solid rgba(92,242,255,0.6);
+            padding:0.3rem 0.9rem;
+            font-size:0.85rem;
+            color:var(--accent-soft);
+        }
+
+        main {
+            max-width:1080px;
+            margin:0 auto;
+            padding:2rem 1.25rem 3rem;
+        }
+
+        .section-label {
+            font-size:0.8rem;
+            text-transform:uppercase;
+            letter-spacing:0.16em;
+            color:var(--accent-soft);
+            margin-bottom:0.35rem;
+        }
+
+        .section-title { font-size:2rem; margin-bottom:0.7rem; }
+        .section-subtitle {
+            font-size:0.98rem;
+            color:var(--text-muted);
+            max-width:640px;
+            margin-bottom:1.6rem;
+        }
+
+        .practice-layout {
+            display:flex;
+            flex-wrap:wrap;
+            gap:1.5rem;
+        }
+
+        .practice-left {
+            flex:1 1 280px;
+            min-width:0;
+        }
+
+        .practice-right {
+            flex:1 1 260px;
+            min-width:0;
+        }
+
+        .card {
+            background:var(--card-bg);
+            border-radius:1rem;
+            border:1px solid var(--border-subtle);
+            padding:1rem;
+            font-size:0.9rem;
+        }
+
+        .card h3 { margin-bottom:0.5rem; font-size:1.05rem; }
+
+        .tag-list {
+            margin-top:0.6rem;
+            font-size:0.85rem;
+            color:var(--text-muted);
+        }
+
+        .tag-list li {
+            margin-left:1rem;
+            list-style:disc;
+            margin-bottom:0.25rem;
+        }
+
+        .select-row {
+            display:flex;
+            flex-wrap:wrap;
+            gap:0.6rem;
+            align-items:center;
+            margin-bottom:0.8rem;
+        }
+
+        select {
+            padding:0.4rem 0.6rem;
+            border-radius:0.45rem;
+            border:1px solid rgba(70,76,104,0.9);
+            background:rgba(5,8,20,0.9);
+            color:var(--text-main);
+            font:inherit;
+        }
+
+        .btn-primary {
+            border-radius:999px;
+            padding:0.45rem 1.1rem;
+            border:1px solid transparent;
+            background: linear-gradient(135deg, #5cf2ff, #5c9eff);
+            color:#050814;
+            font-size:0.88rem;
+            font-weight:600;
+            cursor:pointer;
+        }
+
+        .question-box {
+            margin-top:0.8rem;
+            padding:0.75rem 0.85rem;
+            border-radius:0.7rem;
+            background:rgba(11,16,36,0.9);
+            border:1px solid var(--border-subtle);
+            font-size:0.9rem;
+            white-space:pre-line;
+        }
+
+        .note {
+            margin-top:0.6rem;
+            font-size:0.82rem;
+            color:var(--text-muted);
+        }
+
+        footer {
+            max-width:1080px;
+            margin:0 auto;
+            padding:1.5rem 1.25rem 3rem;
+            font-size:0.8rem;
+            color:var(--text-muted);
+            border-top:1px solid rgba(38,43,63,0.7);
+            display:flex;
+            justify-content:space-between;
+            gap:1rem;
+        }
+
+        @media (max-width: 720px) {
+            .nav-links { display:none; }
+            footer { flex-direction:column; }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="nav">
+        <div class="logo">
+            <span>M</span>
+            MORRIS.DEV
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">首頁</a>
+            <a href="game.html">小遊戲</a>
+            <a href="music.html">Coding 練習</a>
+            <a href="f1.html">F1 新聞</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://github.com/morris940216" target="_blank" rel="noopener">GitHub</a>
+        </nav>
+        <a href="https://github.com/morris940216" target="_blank" rel="noopener" class="nav-cta">
+            GitHub
+        </a>
+    </div>
+</header>
+
+<main>
+    <section id="coding-practice">
+        <div class="section-label">Coding Practice</div>
+        <h1 class="section-title">Coding 練習題目產生器</h1>
+        <p class="section-subtitle">
+            懶得想要練什麼的時候，就來這裡按一下，隨機幫你丟一題。題目以「敘述」為主，你可以自己選語言實作。
+        </p>
+
+        <div class="practice-layout">
+            <div class="practice-left">
+                <div class="card">
+                    <h3>選一個想練習的主題</h3>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">
+                        題目會偏向你目前有在碰的：Java / C / Python / Verilog / Web / 演算法 / PLC。
+                    </p>
+
+                    <div class="select-row" style="margin-top:0.8rem;">
+                        <label for="topic-select">主題：</label>
+                        <select id="topic-select">
+                            <option value="mixed">隨機（全部混合）</option>
+                            <option value="algo">演算法 / 資結</option>
+                            <option value="java">Java / 後端</option>
+                            <option value="c">C / 系統程式</option>
+                            <option value="fpga">FPGA / Verilog</option>
+                            <option value="web">Web / 前後端</option>
+                            <option value="PLC">PLC / 工業配線</option>
+                        </select>
+                        <button id="gen-btn" class="btn-primary">丟一題</button>
+                    </div>
+
+                    <div id="question-box" class="question-box">
+                        按「丟一題」來產生一個練習題目。
+                    </div>
+
+                    <div class="note">
+                        建議：開好 VS Code / ISE / Vivado / IntelliJ，一次專心解一題，不一定要寫到完美，
+                        但至少把 input / output 跑起來。
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-right">
+                <div class="card">
+                    <h3>練習方向建議</h3>
+                    <ul class="tag-list">
+                        <li>演算法：array 處理、字串、stack / queue、DFS / BFS</li>
+                        <li>Java：REST API、小型 service、例外處理、單元測試</li>
+                        <li>C / 系統：指標、struct、檔案 IO、簡單資料結構</li>
+                        <li>FPGA / Verilog：狀態機、debounce、顯示器控制</li>
+                        <li>Web：表單處理、登入、查詢頁、簡單前端互動</li>
+                        <li>PLC：用線路想怎麼接</li>
+
+                    </ul>
+                    <div class="note">
+                        如果某題你覺得很好玩，可以把它升級成真正的 Side Project，
+                        例如變成一個工具網站或是小遊戲。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div>© <span id="year"></span> Morris</div>
+    <div>Coding 練習頁面</div>
+</footer>
+
+<script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const questions = {
+        algo: [
+            "給一個整數陣列，實作一個函式，回傳「最長連續遞增子序列」的長度。\n例： [1,3,5,4,7] -> 3 (1,3,5)",
+            "實作一個簡單的 BFS：給一個無權重圖（adjacency list），和起點 s，回傳每一個節點距離 s 的層數（到不了設為 -1）。",
+            "實作一個 stack，支援 push / pop / top / getMin()，要求 getMin() 為 O(1)。",
+            "給一個字串，判斷是否為合法的括號序列，例如 \"()[]{}\"、\"({[]})\"。"
+        ],
+        java: [
+            "用 Java 寫一個簡單的 REST API：GET /items 回傳一個假資料的 JSON 清單（例如 3 個 item）。你可以用 Spring Boot 或是純 Java 寫個 mock handler。",
+            "實作一個簡單的 Service 類別，提供 addItem / removeItem / listItems，並用 JUnit 寫 3~5 個單元測試。",
+            "模擬你目前的「家庭物資清點系統」的其中一個功能，例如：查詢即將過期的物品，寫成一個獨立的小程式。",
+            "寫一個 Command Line Java 程式，讀入使用者輸入的數字，直到輸入 q，最後印出平均、最大值和最小值。"
+        ],
+        c: [
+            "用 C 實作一個動態陣列（類似 vector），支援 push_back、get(index)、size，內部用 malloc / realloc。",
+            "寫一個 C 程式，讀取一個檔案，計算裡面總共有幾行、幾個字元。",
+            "用 struct 表示一個學生（姓名、學號、三科成績），寫函式計算平均分數，並依照平均排序。",
+            "實作一個簡單的單向 linked list，支援新增節點到尾端、刪除指定值的節點、印出全部節點。"
+        ],
+        fpga: [
+            "用 Verilog 寫一個「反彈計數器」：從 0 數到 7 再反向回到 0，輸出到 3 顆 LED。請規劃狀態機或組合邏輯，並畫出狀態圖。",
+            "寫一個簡單的「按鍵 debounce」模組，輸入為 noisy button，輸出為一個 single pulse（按一下只會出現一個 clock 寬度的脈波）。",
+            "設計一個有限狀態機，控制 4 顆 LED 依序點亮形成跑馬燈，並用 Verilog 實作及寫 testbench。",
+            "為一個 4x4 matrix LED 顯示器寫掃描控制：給定一個 16-bit pattern，依序掃描每一列顯示。"
+        ],
+        web: [
+            "用純 HTML + CSS + JS 寫一個待辦清單（Todo List）：可以新增、打勾完成、刪除，資料可以暫存在 localStorage。",
+            "做一個簡單的「表單驗證」頁面：包含 Email / 密碼 / 確認密碼，按下送出前先在前端檢查格式。",
+            "為你的個人頁面增加一個「深色/淺色」模式切換按鈕，點擊後切換 body 的 class 並調整顏色。",
+            "做一個小工具頁面：輸入一個時間（分鐘），點開始後變成簡單倒數計時器（3,2,1，結束時顯示完成）。"
+        ],
+        PLC: [
+            "畫出一個「兩台馬達互鎖」的 PLC 線路：A 按鈕啟動 M1，B 按鈕啟動 M2，但 M1 與 M2 不能同時運轉。",
+            "設計一個「輸送帶 + 感測器」系統：偵測到物品時輸送帶啟動 5 秒後自動停止，超過 10 秒沒有新物品就整線待機。",
+            "模擬工業配線乙級常見題：三段速度控制 + 緊急停止，請畫出主要接線邏輯（用梯形圖表示）。",
+            "設計一個簡單的「自動切割系統」流程：按下啟動後，夾具閉合 -> 刀具下降 -> 回升 -> 夾具鬆開，全程用 PLC 輸出控制。"
+        ]
+    };
+
+    const topicSelect = document.getElementById("topic-select");
+    const genBtn = document.getElementById("gen-btn");
+    const questionBox = document.getElementById("question-box");
+
+    genBtn.addEventListener("click", () => {
+        const topic = topicSelect.value;
+        let pool = [];
+
+        if (topic === "mixed") {
+            // 全部合在一起
+            Object.values(questions).forEach(arr => pool = pool.concat(arr));
+        } else {
+            pool = questions[topic] || [];
+        }
+
+        if (!pool.length) {
+            questionBox.textContent = "目前這個主題還沒有題目。";
+            return;
+        }
+
+        const idx = Math.floor(Math.random() * pool.length);
+        questionBox.textContent = pool[idx];
+    });
+</script>
+
+</body>
+</html>
