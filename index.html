@@ -137,7 +137,7 @@
             margin-bottom: 1.6rem;
         }
 
-        /* HERO：正常網站風格 */
+        /* HERO */
         .hero {
             display: flex;
             gap: 2rem;
@@ -158,7 +158,7 @@
             gap: 1rem;
         }
 
-/* 新增：HERO 照片樣式 */
+        /* HERO 照片樣式 */
         .hero-photo {
             width: 100%;
             border-radius: 12px;
@@ -166,7 +166,6 @@
             border: 2px solid rgba(92, 242, 255, 0.4);
             box-shadow: 0 0 20px rgba(92, 242, 255, 0.35);
         }
-
 
         .hero-title {
             font-size: 2.1rem;
@@ -470,6 +469,119 @@
             border-top: 1px solid rgba(38, 43, 63, 0.7);
         }
 
+        /* 📰 News Hub 樣式 */
+        .news-hub {
+            margin-top: 0;
+            padding: 2rem 1.5rem;
+            background: rgba(11, 16, 36, 0.6);
+            border-radius: 1.2rem;
+            border: 1px solid rgba(92, 242, 255, 0.25);
+        }
+
+        .news-hub-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-hub-controls label {
+            color: #a5a8c2;
+        }
+
+        .news-hub-controls select {
+            padding: 0.35rem 0.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(70, 76, 104, 0.9);
+            background: rgba(5, 8, 20, 0.9);
+            color: #f5f5f7;
+            font: inherit;
+        }
+
+        .news-hub-status {
+            font-size: 0.8rem;
+            color: #a5a8c2;
+        }
+
+        .news-hub-main {
+    margin-top: 0.6rem;
+    padding: 1.1rem 1.2rem 1.1rem;
+    border-radius: 1rem;
+    background: #14182a;
+    border: 1px solid rgba(92, 242, 255, 0.35);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 右上角小標籤 */
+.news-hub-main-tag {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(92, 242, 255, 0.12);
+    color: #b3f0ff;
+    border: 1px solid rgba(92, 242, 255, 0.35);
+}
+
+/* 幫標題留右邊空間、往下推一點 */
+.news-hub-main-title {
+    font-size: 1.1rem;
+    margin-top: 0.6rem;      /* 新增：往下推，避開 badge */
+    margin-bottom: 0.4rem;
+    padding-right: 5.5rem;   /* 新增：右側保留位置給 badge */
+}
+
+
+        .news-hub-main-desc {
+            font-size: 0.9rem;
+            color: #a5a8c2;
+            margin-bottom: 0.6rem;
+        }
+
+        .news-hub-main-link {
+            font-size: 0.88rem;
+            color: #5cf2ff;
+        }
+
+        .news-hub-grid {
+            margin-top: 1.2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.9rem;
+        }
+
+        .news-hub-card {
+            padding: 0.75rem 0.8rem;
+            border-radius: 0.9rem;
+            background: #0b1020;
+            border: 1px solid rgba(38, 43, 63, 0.7);
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .news-hub-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(92, 242, 255, 0.5);
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
+        }
+
+        .news-hub-card-title {
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .news-hub-card-meta {
+            font-size: 0.78rem;
+            color: #a5a8c2;
+        }
+
         @media (max-width: 720px) {
             .nav-links {
                 display: none;
@@ -478,282 +590,444 @@
             footer {
                 flex-direction: column;
             }
+
+            .news-hub {
+                padding: 1.5rem 1.1rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header>
+<header>
     <div class="nav">
         <div class="logo">
             <span>M</span>
             MORRIS.DEV
         </div>
         <nav class="nav-links">
-  <a href="index.html">首頁</a>
-  <a href="game.html">小遊戲</a>
-  <a href="music.html">Coding 練習</a>
-  <a href="f1.html">F1 新聞</a>
-  <a href="certs.html">證照 / 獎項</a>
-  <a href="index.html#contact">Contact</a>
-  <a href="https://github.com/morris940216" target="_blank" rel="noopener">GitHub</a>
-</nav>
-
+            <a href="index.html">首頁</a>
+            <a href="game.html">小遊戲</a>
+            <a href="music.html">Coding 練習</a>
+            <a href="f1.html">F1 新聞</a>
+            <a href="certs.html">證照 / 獎項</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="https://github.com/morris940216" target="_blank" rel="noopener">GitHub</a>
+        </nav>
         <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener" class="nav-cta">
             GitHub
         </a>
     </div>
 </header>
 
+<main>
+    <!-- HERO -->
+    <section class="hero" id="top">
+        <div class="hero-main">
+            <div class="section-label">Morris</div>
+            <h1 class="hero-title">
+                Hi, I'm <span>Morris</span><br />
+                a developer who likes to ship things.
+            </h1>
+            <p class="hero-text">
+                讀個電機系但只會寫程式，課後會把學到的東西丟進各種 Side Project。
+                從 PLC、Web backend、FPGA / OPAMP 實驗，到 Unreal 通道場景，喜歡看程式怎麼在真實問題裡運作。
+            </p>
 
-    <main>
-        <!-- HERO -->
-        <section class="hero" id="top">
-            <div class="hero-main">
-                <div class="section-label">Morris</div>
-                <h1 class="hero-title">
-                    Hi, I'm <span>Morris</span><br />
-                    a developer who likes to ship things.
-                </h1>
-                <p class="hero-text">
-                    讀個電機系但只會寫程式，課後會把學到的東西丟進各種 Side Project。
-                    從 PLC、Web backend、FPGA / OPAMP 實驗，到 Unreal 通道場景，喜歡看程式怎麼在真實問題裡運作。
-                </p>
-
-                <div class="hero-tags">
-                    <div class="tag">Backend / Web</div>
-                    <div class="tag">Embedded / FPGA</div>
-                    <div class="tag">Side Projects</div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="#projects" class="btn-primary">看專案</a>
-                    <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener" class="btn-outline">
-                        我的 GitHub
-                    </a>
-                </div>
+            <div class="hero-tags">
+                <div class="tag">Backend / Web</div>
+                <div class="tag">Embedded / FPGA</div>
+                <div class="tag">Side Projects</div>
             </div>
 
-            <aside class="hero-side">
+            <div class="hero-actions">
+                <a href="#projects" class="btn-primary">看專案</a>
+                <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener" class="btn-outline">
+                    我的 GitHub
+                </a>
+            </div>
+        </div>
 
-                <img src="morris-award.jpg" alt="Morris with award" class="hero-photo" />
-
-   
-                <div class="hero-card">
-                    <div class="hero-card-title">關於這個網站</div>
-                    <p>
-                        這裡是 Morris 的個人程式頁面，用來整理：做過的專案、實驗、以及常用技術。
-                        比起華麗動畫，更偏向簡潔的形式。
-                    </p>
-                    <div class="hero-card-meta">
-                        <span>🔗 GitHub：<a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener">morris940216</a></span>
+        <aside class="hero-side">
+            <img src="morris-award.jpg" alt="Morris with award" class="hero-photo" />
+            <div class="hero-card">
+                <div class="hero-card-title">關於這個網站</div>
+                <p>
+                    這裡是 Morris 的個人程式頁面，用來整理：做過的專案、實驗、以及常用技術。
+                    比起華麗動畫，更偏向簡潔的形式。
+                </p>
+                <div class="hero-card-meta">
+                    <span>🔗 GitHub：<a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener">morris940216</a></span>
                 </div>
             </div>
         </aside>
+    </section>
 
-        </section>
+    <!-- 📰 GLOBAL NEWS HUB -->
+    <section class="news-hub">
+        <div class="section-label">Global News Hub</div>
+        <h2 class="section-title">🌍 即時重大新聞</h2>
+        <p class="section-subtitle">
+            從國際 / 科技 / 台灣 / F1 / 戰爭新聞中，自動挑選最新事件顯示。每 1 分鐘自動更新一次。
+        </p>
 
-        <!-- ABOUT -->
-        <section id="about">
-            <div class="section-label">About</div>
-            <h2 class="section-title">Who am I?</h2>
-            <p class="section-subtitle">
-                
+        <div class="news-hub-controls">
+            <label for="news-category">分類：</label>
+            <select id="news-category">
+                <option value="world">國際</option>
+                <option value="tech">科技</option>
+                <option value="taiwan">台灣</option>
+                <option value="f1">F1</option>
+                <option value="war">戰爭 / 衝突</option>
+            </select>
+            <span class="news-hub-status" id="news-hub-status">載入中…</span>
+        </div>
+
+        <article class="news-hub-main" id="news-hub-main">
+            <div class="news-hub-main-tag" id="news-hub-main-tag">最新</div>
+            <h3 class="news-hub-main-title" id="news-hub-main-title">載入中…</h3>
+            <p class="news-hub-main-desc" id="news-hub-main-desc">
+                正在從 RSS 取得最新新聞內容。
             </p>
+            <a class="news-hub-main-link" id="news-hub-main-link" href="#" target="_blank" rel="noopener">
+                查看完整報導 →
+            </a>
+        </article>
 
-            <div class="about-grid">
-                <div class="about-text">
-                    <p>
-                        我是 Morris，我喜歡很多天馬行空的idea。比起只做好作業，我更想把它搞很有趣。
-                    </p>
-                    <p>
-                        做過的東西從PLC、家庭物資清點系統、OPAMP / FPGA 實驗，到 Unreal 場景短片都有。
-                    </p>
+        <div class="news-hub-grid" id="news-hub-grid">
+            <!-- JS 會塞 3 則卡片 -->
+        </div>
+    </section>
 
-                    <ul class="about-list">
-                        <li>習慣用 Git 管理版本，專案結構與 commit message 會整理乾淨</li>
-                        <li>會寫文件／簡報，把技術內容轉成一般人也懂的說明</li>
-                        <li>Debug 會先重現問題、畫流程，再縮小範圍，而不是亂改一通</li>
-                    </ul>
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="section-label">About</div>
+        <h2 class="section-title">Who am I?</h2>
+        <p class="section-subtitle"></p>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    我是 Morris，我喜歡很多天馬行空的 idea。比起只做好作業，我更想把它搞很有趣。
+                </p>
+                <p>
+                    做過的東西從 PLC、家庭物資清點系統、OPAMP / FPGA 實驗，到 Unreal 場景短片都有。
+                </p>
+
+                <ul class="about-list">
+                    <li>習慣用 Git 管理版本，專案結構與 commit message 會整理乾淨</li>
+                    <li>會寫文件／簡報，把技術內容轉成一般人也懂的說明</li>
+                    <li>Debug 會先重現問題、畫流程，再縮小範圍，而不是亂改一通</li>
+                </ul>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <strong>10+ projects</strong>
+                    課堂與個人專案累積，持續增加中
                 </div>
-
-                <div class="stats">
-                    <div class="stat-card">
-                        <strong>10+ projects</strong>
-                        課堂與個人專案累積，持續增加中
-                    </div>
-                    <div class="stat-card">
-                        <strong>多領域</strong>
-                        Web、硬體實驗、3D 場景都有碰
-                    </div>
-                    <div class="stat-card">
-                        <strong>學以致用</strong>
-                        上課學到的東西盡量落地到專案
-                    </div>
-                    <div class="stat-card">
-                        <strong>歡迎合作</strong>
-                        專題、工具、作業影片都可討論
-                    </div>
+                <div class="stat-card">
+                    <strong>多領域</strong>
+                    Web、硬體實驗、3D 場景都有碰
+                </div>
+                <div class="stat-card">
+                    <strong>學以致用</strong>
+                    上課學到的東西盡量落地到專案
+                </div>
+                <div class="stat-card">
+                    <strong>歡迎合作</strong>
+                    專題、工具、作業影片都可討論
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- PROJECTS -->
-        <section id="projects">
-            <div class="section-label">Projects</div>
-            <h2 class="section-title">Selected Projects</h2>
-            <p class="section-subtitle">
-                下面是幾個代表目前風格的專案。
-            </p>
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="section-label">Projects</div>
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="section-subtitle">
+            下面是幾個代表目前風格的專案。
+        </p>
 
-            <div class="card-grid">
-                <article class="card">
-                    <div class="card-badge">Web App</div>
-                    <h3 class="card-title">家庭物資清點系統</h3>
-                    <p>Spring Boot + MySQL + Thymeleaf</p>
-                    <p class="card-meta">
-                        管理家中各房間物品與效期，支援數量提醒、過期提醒、地點 / 類別查看。
-                        從資料庫 schema、後端 API 到前端頁面都自行設計。
-                    </p>
-                    <div class="card-tags">
-                        <span>REST API</span> · <span>登入 / 權限</span> · <span>前端 UI</span>
-                    </div>
-                    <!-- 之後可以打開這行 -->
-                    <!-- <a class="card-link" href="https://github.com/morris940216/你的專案" target="_blank" rel="noopener">View on GitHub →</a> -->
-                </article>
-
-                <article class="card">
-                    <div class="card-badge">Game / 3D</div>
-                    <h3 class="card-title">科幻風格 Unreal 通道場景</h3>
-                    <p>Unreal Engine 5 • Blueprint</p>
-                    <p class="card-meta">
-                        建構廢棄地下通道、霧效與燈光、相機路徑與觸發事件（怪物出現等），輸出成 6 秒作業影片。
-                    </p>
-                    <div class="card-tags">
-                        <span>Level Design</span> · <span>Trigger</span> · <span>Sequencer</span>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-badge">Hardware / Lab</div>
-                    <h3 class="card-title">OPAMP & FPGA Lab</h3>
-                    <p>Cadence / Verilog / FPGA</p>
-                    <p class="card-meta">
-                        二階 OPAMP 設計（LVS / DRC / PEX），以及 FPGA 狀態機、Debounce、LED 控制等實驗，整合模擬與實作流程。
-                    </p>
-                    <div class="card-tags">
-                        <span>Analog Design</span> · <span>RTL</span> · <span>EDA Flow</span>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <!-- TECH STACK -->
-        <section id="stack">
-            <div class="section-label">Tech Stack</div>
-            <h2 class="section-title">What I use</h2>
-            <p class="section-subtitle">
-                總覽。
-            </p>
-
-            <div class="stack-grid">
-                <div class="stack-card">
-                    <div class="stack-title">Languages</div>
-                    <p>平常作業與 Side Project 最常用的語言。</p>
-                    <div class="stack-tags">
-                        <span class="stack-tag">Java</span>
-                        <span class="stack-tag">PLC</span>
-                        <span class="stack-tag">C / C++</span>
-                        <span class="stack-tag">Python</span>
-                        <span class="stack-tag">Verilog</span>
-                        <span class="stack-tag">HTML / CSS / JS</span>
-                    </div>
+        <div class="card-grid">
+            <article class="card">
+                <div class="card-badge">Web App</div>
+                <h3 class="card-title">家庭物資清點系統</h3>
+                <p>Spring Boot + MySQL + Thymeleaf</p>
+                <p class="card-meta">
+                    管理家中各房間物品與效期，支援數量提醒、過期提醒、地點 / 類別查看。
+                    從資料庫 schema、後端 API 到前端頁面都自行設計。
+                </p>
+                <div class="card-tags">
+                    <span>REST API</span> · <span>登入 / 權限</span> · <span>前端 UI</span>
                 </div>
+            </article>
 
-                <div class="stack-card">
-                    <div class="stack-title">Web / Backend</div>
-                    <p>做系統、API、網站時使用的技術。</p>
-                    <div class="stack-tags">
-                        <span class="stack-tag">Spring Boot</span>
-                        <span class="stack-tag">Thymeleaf</span>
-                        <span class="stack-tag">REST API</span>
-                        <span class="stack-tag">MySQL</span>
-                    </div>
+            <article class="card">
+                <div class="card-badge">Game / 3D</div>
+                <h3 class="card-title">科幻風格 Unreal 通道場景</h3>
+                <p>Unreal Engine 5 • Blueprint</p>
+                <p class="card-meta">
+                    建構廢棄地下通道、霧效與燈光、相機路徑與觸發事件（怪物出現等），輸出成 6 秒作業影片。
+                </p>
+                <div class="card-tags">
+                    <span>Level Design</span> · <span>Trigger</span> · <span>Sequencer</span>
                 </div>
+            </article>
 
-                <div class="stack-card">
-                    <div class="stack-title">Hardware / Tools</div>
-                    <p>實驗相關工具。</p>
-                    <div class="stack-tags">
-                        <span class="stack-tag">Cadence Virtuoso</span>
-                        <span class="stack-tag">FPGA / ISE</span>
-                        <span class="stack-tag">VSCode / ISE</span>
-                        <span class="stack-tag">Unreal Engine</span>
-                        <span class="stack-tag">Git / GitHub</span>
-                    </div>
+            <article class="card">
+                <div class="card-badge">Hardware / Lab</div>
+                <h3 class="card-title">OPAMP & FPGA Lab</h3>
+                <p>Cadence / Verilog / FPGA</p>
+                <p class="card-meta">
+                    二階 OPAMP 設計（LVS / DRC / PEX），以及 FPGA 狀態機、Debounce、LED 控制等實驗，整合模擬與實作流程。
+                </p>
+                <div class="card-tags">
+                    <span>Analog Design</span> · <span>RTL</span> · <span>EDA Flow</span>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="stack">
+        <div class="section-label">Tech Stack</div>
+        <h2 class="section-title">What I use</h2>
+        <p class="section-subtitle">
+            總覽。
+        </p>
+
+        <div class="stack-grid">
+            <div class="stack-card">
+                <div class="stack-title">Languages</div>
+                <p>平常作業與 Side Project 最常用的語言。</p>
+                <div class="stack-tags">
+                    <span class="stack-tag">Java</span>
+                    <span class="stack-tag">PLC</span>
+                    <span class="stack-tag">C / C++</span>
+                    <span class="stack-tag">Python</span>
+                    <span class="stack-tag">Verilog</span>
+                    <span class="stack-tag">HTML / CSS / JS</span>
                 </div>
             </div>
-        </section>
 
-               <!-- CONTACT -->
-        <section id="contact">
-            <div class="section-label">Contact</div>
-            <h2 class="section-title">Let’s build something</h2>
-            <p class="section-subtitle">
-                專題、工具、作業影片或單純想討論技術，都可以從這裡聯絡我。
-            </p>
+            <div class="stack-card">
+                <div class="stack-title">Web / Backend</div>
+                <p>做系統、API、網站時使用的技術。</p>
+                <div class="stack-tags">
+                    <span class="stack-tag">Spring Boot</span>
+                    <span class="stack-tag">Thymeleaf</span>
+                    <span class="stack-tag">REST API</span>
+                    <span class="stack-tag">MySQL</span>
+                </div>
+            </div>
 
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p>
-                        最主要的聯絡方式是 GitHub 或 email。簡單介紹你自己、專案性質與需要協助的地方，我會盡快回覆。
-                    </p>
-                    <div class="social-links">
-                        <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener">GitHub</a>
-                        <a href="mailto:morris940216@gmail.com">Email</a>
-                    </div>
+            <div class="stack-card">
+                <div class="stack-title">Hardware / Tools</div>
+                <p>實驗相關工具。</p>
+                <div class="stack-tags">
+                    <span class="stack-tag">Cadence Virtuoso</span>
+                    <span class="stack-tag">FPGA / ISE</span>
+                    <span class="stack-tag">VSCode / ISE</span>
+                    <span class="stack-tag">Unreal Engine</span>
+                    <span class="stack-tag">Git / GitHub</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let’s build something</h2>
+        <p class="section-subtitle">
+            專題、工具、作業影片或單純想討論技術，都可以從這裡聯絡我。
+        </p>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p>
+                    最主要的聯絡方式是 GitHub 或 email。簡單介紹你自己、專案性質與需要協助的地方，我會盡快回覆。
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com/morris940216?tab=repositories" target="_blank" rel="noopener">GitHub</a>
+                    <a href="mailto:morris940216@gmail.com">Email</a>
+                </div>
+            </div>
+
+            <form action="https://formspree.io/f/xovodoyz" method="POST" id="contact-form">
+                <div>
+                    <label for="name">Name / 暱稱</label>
+                    <input id="name" type="text" name="name" placeholder="How should I call you?" required />
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input id="email" type="email" name="email" placeholder="you@example.com" required />
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="想一起做什麼、或想問什麼都可以寫在這裡。" required></textarea>
                 </div>
 
-         
-                <form action="https://formspree.io/f/xovodoyz" method="POST" id="contact-form">
-                    <div>
-                        <label for="name">Name / 暱稱</label>
-                        <input id="name" type="text" name="name" placeholder="How should I call you?" required />
-                    </div>
-                    <div>
-                        <label for="email">Email</label>
-                        <input id="email" type="email" name="email" placeholder="you@example.com" required />
-                    </div>
-                    <div>
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="想一起做什麼、或想問什麼都可以寫在這裡。" required></textarea>
-                    </div>
+                <button class="btn-primary" type="submit">Send Message</button>
 
-                    <button class="btn-primary" type="submit">Send Message</button>
+                <p id="form-status" style="
+                    display:none;
+                    margin-top:0.6rem;
+                    font-size:0.85rem;
+                    color:#5cf2ff;
+                ">
+                    ✔ 已成功送出，我會盡快回覆你！
+                </p>
+            </form>
+        </div>
+    </section>
+</main>
 
-                    <!-- 成功訊息 -->
-                    <p id="form-status" style="
-                        display:none;
-                        margin-top:0.6rem;
-                        font-size:0.85rem;
-                        color:#5cf2ff;
-                    ">
-                        ✔ 已成功送出，我會盡快回覆你！
-                    </p>
-                </form>
-            </div>
-        </section>
+<footer>
+    <div>© <span id="year"></span> Morris</div>
+    <div>Personal developer page • GitHub: morris940216</div>
+</footer>
 
-    </main>
+<!-- 📰 News Hub Script -->
+<script>
+const NEWS_SOURCES = {
+  world: {
+    label: "國際",
+    rss: "https://news.google.com/rss/headlines/section/topic/WORLD?hl=en&gl=US&ceid=US:en"
+  },
+  tech: {
+    label: "科技",
+    rss: "https://news.google.com/rss/headlines/section/topic/TECHNOLOGY?hl=en&gl=US&ceid=US:en"
+  },
+  taiwan: {
+    label: "台灣",
+    rss: "https://news.google.com/rss/search?q=台灣&hl=zh-TW&gl=TW&ceid=TW:zh-Hant"
+  },
+  f1: {
+    label: "F1",
+    rss: "https://news.google.com/rss/search?q=Formula+1+OR+F1+race&hl=en&gl=US&ceid=US:en"
+  },
+  war: {
+    label: "戰爭 / 衝突",
+    rss: "https://news.google.com/rss/search?q=war+OR+conflict+OR+attack&hl=en&gl=US&ceid=US:en"
+  }
+};
 
-    <footer>
-        <div>© <span id="year"></span> Morris</div>
-        <div>Personal developer page • GitHub: morris940216</div>
-    </footer>
+function buildRssJsonUrl(rssUrl) {
+  return "https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(rssUrl);
+}
 
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-        
+const mainTag   = document.getElementById("news-hub-main-tag");
+const mainTitle = document.getElementById("news-hub-main-title");
+const mainDesc  = document.getElementById("news-hub-main-desc");
+const mainLink  = document.getElementById("news-hub-main-link");
+const gridEl    = document.getElementById("news-hub-grid");
+const statusEl  = document.getElementById("news-hub-status");
+const categorySelect = document.getElementById("news-category");
+
+let currentItems = [];
+let currentIndex = 0;
+let rotateTimer = null;
+let refreshTimer = null;
+
+function cleanText(html, len) {
+  const tmp = html.replace(/<\/?[^>]+(>|$)/g, "");
+  return tmp.length > len ? tmp.slice(0, len) + "..." : tmp;
+}
+
+function showMainItem(index) {
+  if (!currentItems.length) return;
+  const item = currentItems[index % currentItems.length];
+
+  mainTag.textContent = "最新 · " + (categorySelect.selectedOptions[0].text || "");
+  mainTitle.textContent = item.title || "No title";
+  mainDesc.textContent  = cleanText(item.description || "", 140);
+  mainLink.href         = item.link || "#";
+
+  currentIndex = index % currentItems.length;
+}
+
+function renderGrid() {
+  gridEl.innerHTML = "";
+  const subset = currentItems.slice(0, 3);
+
+  subset.forEach((item, idx) => {
+    const card = document.createElement("article");
+    card.className = "news-hub-card";
+    card.innerHTML = `
+      <div class="news-hub-card-title">${item.title || "Untitled"}</div>
+      <div class="news-hub-card-meta">${item.pubDate ? item.pubDate.slice(0, 10) : ""}</div>
+    `;
+    card.addEventListener("click", () => {
+      showMainItem(idx);
+    });
+    gridEl.appendChild(card);
+  });
+}
+
+async function fetchNews(categoryKey) {
+  const source = NEWS_SOURCES[categoryKey] || NEWS_SOURCES.world;
+  const url = buildRssJsonUrl(source.rss);
+
+  statusEl.textContent = `載入中（${source.label}）…`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (!data.items || !data.items.length) {
+      throw new Error("no items");
+    }
+
+    currentItems = data.items.slice(0, 10);
+    currentIndex = 0;
+
+    showMainItem(0);
+    renderGrid();
+    statusEl.textContent = `已更新（${source.label}，${new Date().toLocaleTimeString()}）`;
+  } catch (err) {
+    console.error("News Hub error:", err);
+    statusEl.textContent = "無法取得新聞，可能是網路或 RSS 服務暫時有問題。";
+    mainTitle.textContent = "無法取得最新新聞";
+    mainDesc.textContent  = "稍後再試，或更換分類重整看看。";
+    mainLink.href = "#";
+    gridEl.innerHTML = "";
+  }
+}
+
+function startRotate() {
+  if (rotateTimer) clearInterval(rotateTimer);
+  rotateTimer = setInterval(() => {
+    if (!currentItems.length) return;
+    showMainItem((currentIndex + 1) % currentItems.length);
+  }, 10000);
+}
+
+function startAutoRefresh() {
+  if (refreshTimer) clearInterval(refreshTimer);
+  refreshTimer = setInterval(() => {
+    fetchNews(categorySelect.value);
+  }, 60000);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchNews(categorySelect.value);
+  startRotate();
+  startAutoRefresh();
+});
+
+categorySelect.addEventListener("change", () => {
+  fetchNews(categorySelect.value);
+  startRotate();
+});
+</script>
+
+<!-- 原本年份 + Contact form script -->
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+
 const form = document.getElementById("contact-form");
 const statusMsg = document.getElementById("form-status");
 
@@ -782,9 +1056,6 @@ form.addEventListener("submit", async function (e) {
         alert("遇到錯誤，請稍後再試。");
     });
 });
-
-
-    </script>
+</script>
 </body>
-
 </html>
